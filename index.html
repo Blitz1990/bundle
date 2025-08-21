@@ -77,6 +77,50 @@
                 </div>
             </div>
         </section>
+
+        <section id="calculator" class="section-padding">
+            <div class="container">
+                <h2 class="text-center">Kostenschätzer für Ihr Traumbad</h2>
+                <p class="text-center" style="max-width: 600px; margin: auto; margin-bottom: 2rem;">Ermitteln Sie hier eine erste grobe Kostenschätzung für Ihre Badsanierung. Die tatsächlichen Kosten können je nach Aufwand und Materialwahl variieren.</p>
+                <div class="calculator-container animate-on-scroll">
+                    <div class="calculator-form">
+                        <form id="badsanierung-rechner">
+                            <div class="form-group">
+                                <label for="groesse">Badezimmergröße (in m²): <span id="groesse-wert">8 m²</span></label>
+                                <input type="range" id="groesse" name="groesse" min="3" max="25" value="8" class="slider">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Was soll saniert werden?</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" name="sanierung" value="dusche"> Dusche erneuern</label>
+                                    <label><input type="checkbox" name="sanierung" value="badewanne"> Badewanne erneuern</label>
+                                    <label><input type="checkbox" name="sanierung" value="fliesen" checked> Fliesen (Boden & Wand)</label>
+                                    <label><input type="checkbox" name="sanierung" value="wc" checked> WC & Spülkasten</label>
+                                    <label><input type="checkbox" name="sanierung" value="waschtisch" checked> Waschtisch & Armaturen</label>
+                                    <label><input type="checkbox" name="sanierung" value="heizkoerper"> Heizkörper</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Materialqualität</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="qualitaet" value="standard" checked> Standard</label>
+                                    <label><input type="radio" name="qualitaet" value="premium"> Premium</label>
+                                    <label><input type="radio" name="qualitaet" value="luxus"> Luxus</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="price-display">
+                        <h3>Geschätzte Kosten</h3>
+                        <p id="geschaetzte-kosten">€ 0</p>
+                        <small>Unverbindliche Schätzung, zzgl. MwSt.</small>
+                        <a href="kontakt.html" class="btn btn-primary" style="margin-top: 1rem;">Jetzt detailliertes Angebot anfordern</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -86,6 +130,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

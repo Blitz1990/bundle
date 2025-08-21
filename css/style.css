@@ -54,9 +54,30 @@ body {
     transition: background-color 0.3s;
 }
 
-.navbar .nav-links a:hover, .navbar .nav-links a.active {
-    background-color: #0056b3;
-    color: #fff;
+.navbar .nav-links a {
+    position: relative;
+}
+
+.navbar .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #007bff;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.navbar .nav-links a:hover::after, .navbar .nav-links a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.navbar .nav-links a.active {
+    color: #0056b3;
 }
 
 
@@ -112,8 +133,14 @@ h2 {
     transition: background-color 0.3s;
 }
 
+.btn {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
 .btn:hover {
     background: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .btn-primary {
@@ -283,4 +310,174 @@ h2 {
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Calculator Styles */
+.calculator-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e7e7e7;
+}
+
+.calculator-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.calculator-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 5px;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #007bff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #007bff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.checkbox-group, .radio-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.checkbox-group label, .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+    background: #f9f9f9;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+
+.price-display {
+    background: #0056b3;
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.price-display h3 {
+    margin-top: 0;
+    color: white;
+    border-bottom: 0;
+}
+
+#geschaetzte-kosten {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+/* Gallery Lightbox Styles */
+.gallery-item {
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#lightbox-image {
+    max-width: 90vw;
+    max-height: 85vh;
+    animation: zoom 0.3s ease-in-out;
+}
+
+@keyframes zoom {
+    from {transform: scale(0.8);}
+    to {transform: scale(1);}
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.lightbox-prev, .lightbox-next {
+    cursor: pointer;
+    color: white;
+    font-size: 3rem;
+    user-select: none;
+    padding: 1rem;
+    transition: 0.3s;
+}
+
+.lightbox-prev {
+    margin-right: 1rem;
+}
+
+.lightbox-next {
+    margin-left: 1rem;
+}
+
+.lightbox-prev:hover, .lightbox-next:hover, .lightbox-close:hover {
+    color: #bbb;
 }

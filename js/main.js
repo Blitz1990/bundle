@@ -1,32 +1,21 @@
+import { initScrollAnimations } from './animations.js';
+import { initActiveNav } from './navigation.js';
+import { initCalculator } from './calculator.js';
+import { initGallery } from './gallery.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll Animation Logic
-    const animationObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    });
+    // Initialize all modules
+    initScrollAnimations();
+    initActiveNav();
 
-    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-    elementsToAnimate.forEach(element => {
-        animationObserver.observe(element);
-    });
+    // Page-specific initializations
+    if (document.getElementById('badsanierung-rechner')) {
+        initCalculator();
+    }
 
-    // Active navigation link styling
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const currentPath = window.location.pathname.split('/').pop();
+    if (document.querySelector('.gallery-grid')) {
+        initGallery();
+    }
 
-    navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-        // Handle root path for index.html
-        if ((currentPath === '' || currentPath === 'index.html') && (linkPath === 'index.html')) {
-            link.classList.add('active');
-        } else if (linkPath === currentPath && currentPath !== 'index.html') {
-            link.classList.add('active');
-        }
-    });
-
-    console.log("Traumbad Köln Webseite geladen. Animationen und aktive Navigation initialisiert.");
+    console.log("Traumbad Köln Webseite modular geladen.");
 });
